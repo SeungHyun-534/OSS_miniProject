@@ -53,3 +53,25 @@ int selectMenu(){
     	return menu;
 }
 
+int loadData(Fruit *f[],int count){
+	int i = 0;
+	FILE *fp;
+	fp = fopen("product.txt","rt");
+
+	if(fp == NULL){
+		printf("=> 파일 없음\n");
+		return 0;
+	}
+
+	for(;i<count;i++){
+		fscanf(fp,"%s",f[i]->name);
+		if(feof(fp)) break;
+		fscanf(fp,"%d",f[i]->weight);
+		fscanf(fp,"%d",f[i]->price);
+		fscanf(fp,"%d",f[i]->stars);
+		fscanf(fp,"%d",f[i]->starsCount);
+	}
+	fclose(fp);
+	printf("=> 로딩 성공\n");
+	return i;
+}

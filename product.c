@@ -87,3 +87,23 @@ void saveData(Fruit *f[],int count){
 		fclose(fp);
 		printf("=> 저장됨!");
 }
+
+void searchName(Fruit* f[],int count){
+	
+	int scnt =0;
+	char search[20];
+
+	printf("검색할 이름?");
+	scanf("%s", search);
+	printf("==================================\n");
+	for(int i=0;i <count;i++){
+		if(f[i]==NULL) continue;
+		if(strstr(f[i]->name,search)){
+			printf("%2d",i+1);
+			readFruit(f[i]);
+		scnt++;
+		}
+	}
+	if(scnt == 0) printf("=> 검색된 데이터 없음!");
+	printf("\n");
+}

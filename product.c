@@ -1,6 +1,8 @@
 #include "product.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 int addFruit(Fruit* f){
 	printf("과일 이름은 ?");
 	scanf("%s",f->name);
@@ -53,7 +55,7 @@ int selectMenu(){
     	return menu;
 }
 
-int loadData(Fruit *f[],int count){
+int loadData(Fruit *f[]){
 	int i = 0;
 	FILE *fp;
 	fp = fopen("product.txt","rt");
@@ -63,13 +65,13 @@ int loadData(Fruit *f[],int count){
 		return 0;
 	}
 
-	for(;i<count;i++){
+	for(;i<20;i++){
 		fscanf(fp,"%s",f[i]->name);
 		if(feof(fp)) break;
-		fscanf(fp,"%d",f[i]->weight);
-		fscanf(fp,"%d",f[i]->price);
-		fscanf(fp,"%d",f[i]->stars);
-		fscanf(fp,"%d",f[i]->starsCount);
+		fscanf(fp,"%d",&f[i]->weight);
+		fscanf(fp,"%d",&f[i]->price);
+		fscanf(fp,"%d",&f[i]->stars);
+		fscanf(fp,"%d",&f[i]->starsCount);
 	}
 	fclose(fp);
 	printf("=> 로딩 성공\n");
@@ -82,7 +84,7 @@ void saveData(Fruit *f[],int count){
 
 	for(int i=0;i<count;i++){
 		if(f[i] == NULL) continue;
-		fprintf(fp,"%s %d %d %d %d\n",f[i]->name,f[i]->weight,f[i]->price,f[i]-stars,f[i]->starsCount);
+		fprintf(fp,"%s %d %d %d %d\n",f[i]->name,f[i]->weight,f[i]->price,f[i]->stars,f[i]->starsCount);
 	}	
 		fclose(fp);
 		printf("=> 저장됨!");
@@ -179,7 +181,7 @@ void searchI(Fruit* f[],int count){
 void selectSearch(Fruit*f[],int count){
 	printf("어떤 검색을 원하세요?\n");
 	printf("1. 이름으로 검색\n");
-	printf("2. 중량으로 검색\ㅜ");
+	printf("2. 중량으로 검색\n");
 	printf("3. 별점으로 검색\n");
 	printf("4. 통합검색\n");
 

@@ -175,3 +175,30 @@ void searchI(Fruit* f[],int count){
 	if(scnt == 0) printf("=> 검색된 데이터 없음!");
 	printf("\n");
 }
+
+void selectSearch(Fruit*f[],int count){
+	printf("어떤 검색을 원하세요?\n");
+	printf("1. 이름으로 검색\n");
+	printf("2. 중량으로 검색\ㅜ");
+	printf("3. 별점으로 검색\n");
+	printf("4. 통합검색\n");
+
+	int whichSearch;
+	scanf("%d",&whichSearch);
+
+	switch(whichSearch){
+		case 1: searchName(f,count);
+			break;
+		case 2: searchWeight(f,count);
+			break;
+		case 3: searchStars(f,count);
+			break;
+		case 4: searchI(f,count);
+			break;
+		default: printf("잘못된 입력입니다!!!\n");
+	}
+}
+		
+
+
+	

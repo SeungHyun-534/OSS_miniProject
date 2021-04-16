@@ -6,6 +6,9 @@ int main(){
 
 	int count = 0,index=0,menu;
 	Fruit * fp[20];
+	count = loadData(fp);
+	index = count;
+
 	while(1){
 #ifdef DEBUG
 		printf("index , count : %d, %d",index,count);
@@ -30,6 +33,12 @@ int main(){
             		deleteFruit(fp[no-1]);
             		count--;
         	}
+		else if(menu == 5) {
+		       saveData(fp,index);
+		}
+ 		else if(menu == 6){
+			selectSearch(fp,index);
+		}		
     	}	
 
     printf("종료됨!\n");

@@ -107,3 +107,71 @@ void searchName(Fruit* f[],int count){
 	if(scnt == 0) printf("=> 검색된 데이터 없음!");
 	printf("\n");
 }
+
+void searchWeight(Fruit* f[],int count){
+	
+	int scnt =0;
+	int search;
+
+	printf("검색할 중량?");
+	scanf("%d",&search);
+	printf("==================================\n");
+	for(int i=0;i <count;i++){
+		if(f[i]==NULL) continue;
+		if(search == f[i]->weight){
+			printf("%2d",i+1);
+			readFruit(f[i]);
+		scnt++;
+		}
+	}
+	if(scnt == 0) printf("=> 검색된 데이터 없음!");
+	printf("\n");
+}
+
+
+
+void searchStars(Fruit* f[],int count){
+	
+	int scnt =0;
+	int search;
+
+	printf("검색할 중량?");
+	scanf("%d",&search);
+	printf("==================================\n");
+	for(int i=0;i <count;i++){
+		if(f[i]==NULL) continue;
+		if(search == f[i]->stars){
+			printf("%2d",i+1);
+			readFruit(f[i]);
+		scnt++;
+		}
+	}
+	if(scnt == 0) printf("=> 검색된 데이터 없음!");
+	printf("\n");
+}
+
+void searchI(Fruit* f[],int count){
+	
+	int scnt =0;
+	char name[20];
+	int weight;
+	int price;
+
+	printf("검색할 이름?");
+	scanf("%s",name);
+	printf("검색할 중량?");
+	scanf("%d",&weight);
+	printf("검색할 가격?");
+	scanf("%d",&price);
+	printf("==================================\n");
+	for(int i=0;i <count;i++){
+		if(f[i]==NULL) continue;
+		if(strstr(f[i]->name,name)&& weight == f[i]->weight && price == f[i]->price){
+			printf("%2d",i+1);
+			readFruit(f[i]);
+		scnt++;
+		}
+	}
+	if(scnt == 0) printf("=> 검색된 데이터 없음!");
+	printf("\n");
+}

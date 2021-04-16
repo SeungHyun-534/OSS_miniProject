@@ -75,3 +75,15 @@ int loadData(Fruit *f[],int count){
 	printf("=> 로딩 성공\n");
 	return i;
 }
+
+void saveData(Fruit *f[],int count){
+	FILE *fp;
+	fp = fopen("product.txt","wt");
+
+	for(int i=0;i<count;i++){
+		if(f[i] == NULL) continue;
+		fprintf(fp,"%s %d %d %d %d\n",f[i]->name,f[i]->weight,f[i]->price,f[i]-stars,f[i]->starsCount);
+	}	
+		fclose(fp);
+		printf("=> 저장됨!");
+}

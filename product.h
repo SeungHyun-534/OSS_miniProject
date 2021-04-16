@@ -24,4 +24,5 @@ void saveData(Fruit *f[],int count); // File 저장함수
 int loadData(Fruit *f[]); // File에서 정보를 받아오는 함수
 
 int selectMenu(); // 사용자 메뉴 선택 함수 
+void selectSearch();// 어떤 검색기능을 수행할지 묻는 함수
 #endif

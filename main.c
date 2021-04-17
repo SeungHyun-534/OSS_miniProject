@@ -31,6 +31,7 @@ int main(){
 			int no = selectDataNo(fp,index);
 			if(no == 0) continue;
             		deleteFruit(fp[no-1]);
+			fp[no-1] = NULL;
             		count--;
         	}
 		else if(menu == 5) {

@@ -38,7 +38,7 @@ void editFruit(Fruit* f){
 
 int deleteFruit(Fruit* f){
 	free(f);
-	f = NULL;
+	printf("삭제됨\n");
 	return 1;
 }	
 
@@ -68,6 +68,7 @@ int loadData(Fruit *f[]){
 	}
 
 	for(;i<20;i++){
+		f[i] = (Fruit*)malloc(sizeof(Fruit));
 		fscanf(fp,"%s",f[i]->name);
 		if(feof(fp)) break;
 		fscanf(fp,"%d",&f[i]->weight);
@@ -103,7 +104,7 @@ void searchName(Fruit* f[],int count){
 	for(int i=0;i <count;i++){
 		if(f[i]==NULL) continue;
 		if(strstr(f[i]->name,search)){
-			printf("%2d",i+1);
+			printf("%2d. ",i+1);
 			readFruit(f[i]);
 		scnt++;
 		}
@@ -123,7 +124,7 @@ void searchWeight(Fruit* f[],int count){
 	for(int i=0;i <count;i++){
 		if(f[i]==NULL) continue;
 		if(search == f[i]->weight){
-			printf("%2d",i+1);
+			printf("%2d. ",i+1);
 			readFruit(f[i]);
 		scnt++;
 		}
@@ -139,13 +140,13 @@ void searchStars(Fruit* f[],int count){
 	int scnt =0;
 	int search;
 
-	printf("검색할 중량?");
+	printf("검색할 별점?");
 	scanf("%d",&search);
 	printf("==================================\n");
 	for(int i=0;i <count;i++){
 		if(f[i]==NULL) continue;
 		if(search == f[i]->stars){
-			printf("%2d",i+1);
+			printf("%2d. ",i+1);
 			readFruit(f[i]);
 		scnt++;
 		}
@@ -171,7 +172,7 @@ void searchI(Fruit* f[],int count){
 	for(int i=0;i <count;i++){
 		if(f[i]==NULL) continue;
 		if(strstr(f[i]->name,name)&& weight == f[i]->weight && price == f[i]->price){
-			printf("%2d",i+1);
+			printf("%2d. ",i+1);
 			readFruit(f[i]);
 		scnt++;
 		}
